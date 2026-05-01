@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,14 +8,62 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  
+  <!--renderizar el contenido solo cuando el usuario selecciona esta opción. -->
+  <div *ngIf="folder === 'Inicio'" class="ion-padding">
+    <ion-card>
+      <!—Incorpora imagen e información en pantalla de inicio -->
+      <img src="assets/banner.jpg" alt="Bienvenidos" />
+      <ion-card-header>
+        <ion-card-title>Bienvenidos a la App</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Esta es la página principal de mi evaluación de Ionic. 
+        Utiliza el menú lateral para navegar por las secciones.
+      </ion-card-content>
+    </ion-card>
   </div>
+
+  <!—Configura información personal que se va mostrar -->
+  <div *ngIf="folder === 'Informacion-personal'" class="ion-padding ion-text-center">
+    <ion-avatar style="margin: 20px auto; width: 120px; height: 120px;">
+      <img src="assets/perfil.jpg" alt="Mi Foto" />
+    </ion-avatar>
+    
+    <h2>EVALUACIÓN I</h2>
+    
+    <ion-list lines="inset">
+      <ion-item>
+        <ion-label>
+          <h3>Nombre de Estudiante</h3>
+          <p>Domingo Silva</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h3>UNETI</h3>
+          <p>PROGRAMACIÓN III</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!—Configura información de contacto -->
+  <div *ngIf="folder === 'Contacto'" class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>dasb.38@gmail.com</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-whatsapp" slot="start" color="success"></ion-icon>
+        <ion-label>+58 412 6373621</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="location-outline" slot="start" color="danger"></ion-icon>
+        <ion-label>Venezuela - Caracas</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>

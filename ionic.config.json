@@ -1,0 +1,7 @@
+{
+  "name": "mi-app-DS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="contactForm" (ngSubmit)="enviarFormulario()">
+    
+    <ion-item>
+      <ion-label position="stacked">Nombre Completo</ion-label>
+      <ion-input type="text" formControlName="nombre" placeholder="Ej. Domingo Silva"></ion-input>
+    </ion-item>
+    <div class="error-container" *ngIf="contactForm.get('nombre')?.touched && contactForm.get('nombre')?.hasError('required')">
+      <small style="color: #e74c3c; padding-left: 15px;">El nombre es requerido.</small>
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked">Correo Electrónico</ion-label>
+      <ion-input type="email" formControlName="email" placeholder="ejemplo@correo.com"></ion-input>
+    </ion-item>
+    <div class="error-container" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('email')">
+      <small style="color: #e74c3c; padding-left: 15px;">Por favor, ingresa un correo válido.</small>
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked">Mensaje o Comentario</ion-label>
+      <ion-textarea formControlName="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."></ion-textarea>
+    </ion-item>
+    <div class="error-container" *ngIf="contactForm.get('mensaje')?.touched && contactForm.get('mensaje')?.hasError('minlength')">
+      <small style="color: #e74c3c; padding-left: 15px;">El mensaje debe tener al menos 10 caracteres.</small>
+    </div>
+
+    <div class="ion-padding-top">
+      <ion-button expand="block" type="submit" [disabled]="contactForm.invalid">
+        Enviar Mensaje
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>
